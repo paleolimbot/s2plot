@@ -2,8 +2,6 @@
 % Please edit documentation in R/s2plot-package.R
 \docType{package}
 \name{s2plot-package}
-\alias{s2plot}
-\alias{s2plot-package}
 \title{s2plot: Plot spatial objects on a sphere}
 \description{
 Experimental spherical plotting of spatial objects.

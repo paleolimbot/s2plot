@@ -18,6 +18,7 @@ Suggests:
 Imports: 
     libs2,
     mapproj,
-    wk
+    wk,
+    withr
 Remotes:
     r-spatial/libs2
