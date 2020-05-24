@@ -36,4 +36,8 @@ test_that("hemisphere generation works", {
   hem_kilter <- make_hemisphere(35, 12, epsilon = 0)
   expect_equal(range(hem_kilter$lng), c(-180, 180))
   expect_true(all(abs(range(hem_kilter$lat) - c(12 - 90, 90 - 12)) < 0.01))
+
+  hem_epsilon <- make_hemisphere(0, 0, epsilon = 1)
+  expect_equal(range(hem_epsilon$lng), c(-45, 45))
+  expect_equal(range(hem_epsilon$lat), c(-45, 45))
 })
