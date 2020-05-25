@@ -22,3 +22,5 @@ Imports:
     withr
 Remotes:
     r-spatial/libs2
+URL: https://github.com/paleolimbot/s2plot
+BugReports: https://github.com/paleolimbot/s2plot/issues
