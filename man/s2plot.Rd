@@ -2,22 +2,27 @@
 % Please edit documentation in R/s2plot.R
 \name{s2plot}
 \alias{s2plot}
-\alias{s2plot_new}
-\alias{s2plot_draw}
+\alias{s2plot_par_default}
 \title{Plot an object on the sphere}
 \usage{
-s2plot(geog, ..., xlim = NULL, ylim = NULL)
+s2plot(
+  geog,
+  ...,
+  projection = s2plot_projection_default(geog),
+  xlim = NULL,
+  ylim = NULL,
+  par = s2plot_par_default(),
+  add = FALSE
+)
 
-s2plot_new(geog, ..., xlim = NULL, ylim = NULL)
-
-s2plot_draw(geog, ...)
+s2plot_par_default()
 }
 \arguments{
 \item{geog}{A \code{\link[libs2:s2geography]{libs2::s2geography()}}}
 
 \item{...}{Passed to graphics functions.}
 
-\item{xlim, ylim}{Limits in projected space (usually in the range -1 to 1).}
+\item{xlim, ylim}{Limits in projected space.}
 }
 \value{
 \code{x}, invisibly

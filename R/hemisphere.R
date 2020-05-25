@@ -36,7 +36,7 @@ great_circle <- function(x, y, z, length.out  = 200) {
   data.frame(x = v1 / r, y = v2 / r, z = v3 / r)
 }
 
-make_hemisphere <- function(lng, lat, detail = 10000, epsilon = 0.01, precision = 2) {
+make_hemisphere <- function(lng, lat, detail = 10000, epsilon = 0.1, precision = 2) {
 
   ref_latlng <- libs2::s2latlng(lat, lng)
   ref_point <- as.data.frame(libs2::s2point(ref_latlng))
@@ -55,7 +55,7 @@ make_hemisphere <- function(lng, lat, detail = 10000, epsilon = 0.01, precision 
   rbind(great_circle_latlng, great_circle_latlng[1, , drop = FALSE])[c("lng", "lat")]
 }
 
-make_hemisphere_wkt <- function(lng, lat, detail = 10000, epsilon = 0.01, precision = 2) {
+make_hemisphere_wkt <- function(lng, lat, detail = 10000, epsilon = 0.1, precision = 2) {
   coord_df <- make_hemisphere(lng, lat, detail = detail, epsilon = epsilon, precision = precision)
   coords <- paste0(coord_df$lng, " ", coord_df$lat, collapse = ", ")
   sprintf("POLYGON ((%s))", coords)

@@ -2,6 +2,7 @@
 % Please edit documentation in R/proj.R
 \name{s2plot_projection_orthographic}
 \alias{s2plot_projection_orthographic}
+\alias{s2plot_projection_default}
 \alias{s2plot_prepare}
 \alias{s2plot_project}
 \alias{s2plot_prepare.s2plot_projection_orthographic}
@@ -9,6 +10,8 @@
 \title{Define a projection to use with s2plot}
 \usage{
 s2plot_projection_orthographic(point, rotation = 0)
+
+s2plot_projection_default(geog)
 
 s2plot_prepare(projection, geog)
 
@@ -23,10 +26,10 @@ s2plot_project(projection, geog)
 
 \item{rotation}{Rotation}
 
+\item{geog}{A \code{\link[libs2:s2geography]{libs2::s2geography()}}}
+
 \item{projection}{Right now \code{\link[=s2plot_projection_orthographic]{s2plot_projection_orthographic()}}
 is the only projection.}
-
-\item{geog}{A \code{\link[libs2:s2geography]{libs2::s2geography()}}}
 }
 \description{
 Define a projection to use with s2plot

@@ -18,6 +18,12 @@ s2plot_projection_orthographic <- function(point, rotation = 0) {
 
 #' @rdname s2plot_projection_orthographic
 #' @export
+s2plot_projection_default <- function(geog) {
+  s2plot_projection_orthographic(libs2::s2_centroid_agg(geog, na.rm = TRUE))
+}
+
+#' @rdname s2plot_projection_orthographic
+#' @export
 s2plot_prepare <- function(projection, geog) {
   UseMethod("s2plot_prepare")
 }
