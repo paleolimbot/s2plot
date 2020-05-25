@@ -18,8 +18,12 @@ s2plot_projection_orthographic <- function(point, rotation = 0) {
 
 #' @rdname s2plot_projection_orthographic
 #' @export
-s2plot_projection_default <- function(geog) {
-  s2plot_projection_orthographic(libs2::s2_centroid_agg(geog, na.rm = TRUE))
+s2plot_projection_default <- function(geog, add = FALSE) {
+  if (add) {
+    last_projection_env$last_projection
+  } else {
+    s2plot_projection_orthographic(libs2::s2_centroid_agg(geog, na.rm = TRUE))
+  }
 }
 
 #' @rdname s2plot_projection_orthographic
@@ -49,8 +53,15 @@ s2plot_project.s2plot_projection_orthographic <- function(projection, geog) {
   projected <- mapproj::mapproject(
     xy$x, xy$y,
     projection = "orthographic",
-    orientation = c(projection$point, projection$rotation)
+    orientation = c(projection$point[2], projection$point[1], projection$rotation[1])
   )
+
+  if (projected$error != 0) {
+    warning(sprintf("Projection error: %s", projected$error))
+  }
 
   projected[c("x", "y")]
 }
+
+# place to keep track of previous env
+last_projection_env <- new.env(parent = emptyenv())

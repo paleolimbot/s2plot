@@ -21,6 +21,8 @@ s2plot <- function(geog, ..., projection = s2plot_projection_default(geog),
         xlim = if (is.null(xlim)) range(geog_xy$x, finite = TRUE) else xlim,
         ylim = if (is.null(ylim)) range(geog_xy$y, finite = TRUE) else ylim
       )
+
+      last_projection_env$last_projection <- projection
     }
 
     geog_split <- split(
