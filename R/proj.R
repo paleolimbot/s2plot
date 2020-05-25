@@ -48,6 +48,7 @@ s2plot_prepare.s2plot_projection_orthographic <- function(projection, geog) {
 #' @rdname s2plot_projection_orthographic
 #' @export
 s2plot_project.s2plot_projection_orthographic <- function(projection, geog) {
+  # realistically this should segmentize first
   xy <- wk::wkb_coords(libs2::s2_asbinary(geog), sep_na = TRUE)
 
   projected <- mapproj::mapproject(

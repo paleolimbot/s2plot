@@ -6,6 +6,14 @@
 \description{
 Experimental spherical plotting of spatial objects.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/paleolimbot/s2plot}
+  \item Report bugs at \url{https://github.com/paleolimbot/s2plot/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Dewey Dunnington \email{dewey@fishandwhistle.net} (\href{https://orcid.org/0000-0002-9415-4582}{ORCID})
 

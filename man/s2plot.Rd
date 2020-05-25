@@ -8,7 +8,7 @@
 s2plot(
   geog,
   ...,
-  projection = s2plot_projection_default(geog),
+  projection = s2plot_projection_default(geog, add),
   xlim = NULL,
   ylim = NULL,
   par = s2plot_par_default(),

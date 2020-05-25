@@ -11,7 +11,7 @@
 \usage{
 s2plot_projection_orthographic(point, rotation = 0)
 
-s2plot_projection_default(geog)
+s2plot_projection_default(geog, add = FALSE)
 
 s2plot_prepare(projection, geog)
 

@@ -8,7 +8,7 @@
 #' @return `x`, invisibly
 #' @export
 #'
-s2plot <- function(geog, ..., projection = s2plot_projection_default(geog),
+s2plot <- function(geog, ..., projection = s2plot_projection_default(geog, add),
                    xlim = NULL, ylim = NULL, par = s2plot_par_default(), add = FALSE) {
   withr::with_par(par, {
     geog <- s2plot_prepare(projection, geog)
