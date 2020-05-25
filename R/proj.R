@@ -3,8 +3,6 @@
 #'
 #' @param point The centre of the projection
 #' @param rotation Rotation
-#' @param projection Right now [s2plot_projection_orthographic()]
-#'   is the only projection.
 #' @inheritParams s2plot
 #'
 #' @export

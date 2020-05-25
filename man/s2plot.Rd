@@ -22,11 +22,25 @@ s2plot_par_default()
 
 \item{...}{Passed to graphics functions.}
 
+\item{projection}{Right now \code{\link[=s2plot_projection_orthographic]{s2plot_projection_orthographic()}}
+is the only projection. The default is either calculated
+based on the \code{\link[libs2:s2_centroid_agg]{libs2::s2_centroid_agg()}} of \code{geog} or the
+last used projection if \code{add = TRUE}.}
+
 \item{xlim, ylim}{Limits in projected space.}
+
+\item{par}{Graphical \code{\link[graphics:par]{graphics::par()}} to set prior to plotting}
+
+\item{add}{Add to the current plot? Use \code{FALSE} to create a new plot.}
 }
 \value{
 \code{x}, invisibly
 }
 \description{
 Plot an object on the sphere
+}
+\examples{
+s2plot(libs2::s2data_countries())
+s2plot(libs2::s2data_cities("London"), pch = 16, add = TRUE)
+
 }

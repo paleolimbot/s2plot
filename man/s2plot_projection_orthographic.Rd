@@ -28,8 +28,12 @@ s2plot_project(projection, geog)
 
 \item{geog}{A \code{\link[libs2:s2geography]{libs2::s2geography()}}}
 
+\item{add}{Add to the current plot? Use \code{FALSE} to create a new plot.}
+
 \item{projection}{Right now \code{\link[=s2plot_projection_orthographic]{s2plot_projection_orthographic()}}
-is the only projection.}
+is the only projection. The default is either calculated
+based on the \code{\link[libs2:s2_centroid_agg]{libs2::s2_centroid_agg()}} of \code{geog} or the
+last used projection if \code{add = TRUE}.}
 }
 \description{
 Define a projection to use with s2plot

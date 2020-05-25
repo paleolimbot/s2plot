@@ -10,19 +10,19 @@ great_circle <- function(x, y, z, length.out  = 200) {
 
   theta_out <- seq(-pi, pi, length.out = length.out)
 
-  if(z == 0 && y != 0) {
+  if(!near_zero(y)) {
     # solve for v2
     # v2 = (-x * v1 - z * v3) / y
     v1 <- cos(theta_out)
     v3 <- sin(theta_out)
     v2 <- (-x * v1 - z * v3) / y
-  } else if(z == 0 && y == 0) {
+  } else if(!near_zero(x)) {
     # solve for v1
     # v1 <- (-y * v2 - z * v3) / x
     v2 <- cos(theta_out)
     v3 <- sin(theta_out)
     v1 <- (-y * v2 - z * v3) / x
-  } else if(z != 0) {
+  } else if(!near_zero(z)) {
     # solve for v3
     # v3 = (-x v1 - y v2) / z
     v1 <- cos(theta_out)
@@ -34,6 +34,10 @@ great_circle <- function(x, y, z, length.out  = 200) {
 
   r <- sqrt(v1*v1 + v2*v2 + v3*v3)
   data.frame(x = v1 / r, y = v2 / r, z = v3 / r)
+}
+
+near_zero <- function(x, epsilon = 1e-8) {
+  abs(x) < epsilon
 }
 
 make_hemisphere <- function(lng, lat, detail = 10000, epsilon = 0.1, precision = 2) {
