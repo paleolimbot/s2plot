@@ -18,13 +18,13 @@ s2plot(
 s2plot_par_default()
 }
 \arguments{
-\item{geog}{A \code{\link[libs2:s2geography]{libs2::s2geography()}}}
+\item{geog}{A \code{\link[s2:as_s2_geography]{s2::as_s2_geography()}}}
 
 \item{...}{Passed to graphics functions.}
 
 \item{projection}{Right now \code{\link[=s2plot_projection_orthographic]{s2plot_projection_orthographic()}}
 is the only projection. The default is either calculated
-based on the \code{\link[libs2:s2_centroid_agg]{libs2::s2_centroid_agg()}} of \code{geog} or the
+based on the \code{\link[s2:s2_boundary]{s2::s2_centroid_agg()}} of \code{geog} or the
 last used projection if \code{add = TRUE}.}
 
 \item{xlim, ylim}{Limits in projected space.}
@@ -40,7 +40,7 @@ last used projection if \code{add = TRUE}.}
 Plot an object on the sphere
 }
 \examples{
-s2plot(libs2::s2data_countries())
-s2plot(libs2::s2data_cities("London"), pch = 16, add = TRUE)
+s2plot(s2::s2_data_countries())
+s2plot(s2::s2_data_cities("London"), pch = 16, add = TRUE)
 
 }

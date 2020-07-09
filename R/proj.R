@@ -9,7 +9,7 @@
 #'
 s2plot_projection_orthographic <- function(point, rotation = 0) {
   structure(
-    list(point = c(libs2::s2_x(point), libs2::s2_y(point)), rotation = rotation),
+    list(point = c(s2::s2_x(point), s2::s2_y(point)), rotation = rotation),
     class = "s2plot_projection_orthographic"
   )
 }
@@ -20,7 +20,7 @@ s2plot_projection_default <- function(geog, add = FALSE) {
   if (add) {
     last_projection_env$last_projection
   } else {
-    s2plot_projection_orthographic(libs2::s2_centroid_agg(geog, na.rm = TRUE))
+    s2plot_projection_orthographic(s2::s2_centroid_agg(geog, na.rm = TRUE))
   }
 }
 
@@ -39,15 +39,15 @@ s2plot_project <- function(projection, geog) {
 #' @rdname s2plot_projection_orthographic
 #' @export
 s2plot_prepare.s2plot_projection_orthographic <- function(projection, geog) {
-  hemisphere <- libs2::s2geography(make_hemisphere_wkt(projection$point[1], projection$point[2]))
-  libs2::s2_intersection(geog, hemisphere)
+  hemisphere <- s2::as_s2_geography(make_hemisphere_wkt(projection$point[1], projection$point[2]))
+  s2::s2_intersection(geog, hemisphere)
 }
 
 #' @rdname s2plot_projection_orthographic
 #' @export
 s2plot_project.s2plot_projection_orthographic <- function(projection, geog) {
   # realistically this should segmentize first
-  xy <- wk::wkb_coords(libs2::s2_asbinary(geog), sep_na = TRUE)
+  xy <- wkutils::wkb_coords(s2::s2_as_binary(geog), sep_na = TRUE)
 
   projected <- mapproj::mapproject(
     xy$x, xy$y,

@@ -33,7 +33,7 @@ test_that("orthographic projection projects correctly", {
 
 test_that("orthographic projection prepares correctly", {
   expect_identical(
-    libs2::s2_astext(
+    s2::s2_as_text(
       s2plot_prepare(
         s2plot_projection_orthographic("POINT (0 0)"),
         c("POINT (80 0)", "POINT (91 0)")

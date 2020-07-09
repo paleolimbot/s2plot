@@ -42,8 +42,8 @@ near_zero <- function(x, epsilon = 1e-8) {
 
 make_hemisphere <- function(lng, lat, detail = 10000, epsilon = 0.1, precision = 2) {
 
-  ref_latlng <- libs2::s2latlng(lat, lng)
-  ref_point <- as.data.frame(libs2::s2point(ref_latlng))
+  ref_latlng <- s2::s2_lnglat(lng, lat)
+  ref_point <- as.data.frame(s2::as_s2_point(ref_latlng))
   great_circle_df <- great_circle(ref_point$x, ref_point$y, ref_point$z, length.out = detail)
 
   # move these all a tiny bit in the direction of ref_point to prevent
@@ -52,8 +52,8 @@ make_hemisphere <- function(lng, lat, detail = 10000, epsilon = 0.1, precision =
   lengths <- with(great_circle_df, sqrt(x * x + y * y + z * z))
   great_circle_df <- great_circle_df / data.frame(x = lengths, y = lengths, z = lengths)
 
-  great_circle_point <- libs2::s2point(as.matrix(great_circle_df))
-  great_circle_latlng <- unique(round(as.data.frame(libs2::s2latlng(great_circle_point)), precision))
+  great_circle_point <- s2::as_s2_point(as.matrix(great_circle_df))
+  great_circle_latlng <- unique(round(as.data.frame(s2::as_s2_lnglat(great_circle_point)), precision))
 
   # close the ring
   rbind(great_circle_latlng, great_circle_latlng[1, , drop = FALSE])[c("lng", "lat")]
