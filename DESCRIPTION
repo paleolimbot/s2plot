@@ -16,7 +16,7 @@ RoxygenNote: 7.1.1
 Suggests: 
     testthat
 Imports: 
-    s2 (>= 1.0.0),
+    s2 (>= 1.0.1),
     mapproj,
     wk,
     wkutils,
