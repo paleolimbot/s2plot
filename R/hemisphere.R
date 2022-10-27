@@ -54,6 +54,7 @@ make_hemisphere <- function(lng, lat, detail = 10000, epsilon = 0.1, precision =
 
   great_circle_point <- s2::as_s2_point(as.matrix(great_circle_df))
   great_circle_latlng <- unique(round(as.data.frame(s2::as_s2_lnglat(great_circle_point)), precision))
+  colnames(great_circle_latlng) <- c("lng", "lat")
 
   # close the ring
   rbind(great_circle_latlng, great_circle_latlng[1, , drop = FALSE])[c("lng", "lat")]
